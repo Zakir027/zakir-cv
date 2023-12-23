@@ -35,7 +35,7 @@ pipeline {
                                 configName: "Zakir", 
                                 transfers: [sshTransfer(
                                     execCommand: """
-                                        docker pull zakir279/zakir-cv:${env.BUILD_ID}
+                                        docker pull zakir279/zakir-cCv:${env.BUILD_ID}
                                         docker stop zakir-cv-container || true
                                         docker rm zakir-cv-container || true
                                         docker run -d --name zakir-cv-container -p 400:80 zakir279/zakir-cv:${env.BUILD_ID}
