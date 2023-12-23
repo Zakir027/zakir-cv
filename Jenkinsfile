@@ -54,7 +54,7 @@ pipeline {
                         sshPublisher(
                             publishers: [
                                 sshPublisherDesc(
-                                    configName: "MyUbuntuServer",
+                                    configName: "Zakir",
                                     transfers: [sshTransfer(
                                         execCommand: """
                                             docker pull zakir279/zakir-cv:${previousSuccessfulTag}
