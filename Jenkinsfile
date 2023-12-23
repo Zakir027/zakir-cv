@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    dockerImage = docker.build("zakir279/zakir-cCcv:${env.BUILD_ID}")
+                    dockerImage = docker.build("zakir279/zakir-cv:${env.BUILD_ID}")
                 }
             }
         }
