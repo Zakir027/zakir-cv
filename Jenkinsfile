@@ -45,32 +45,7 @@ pipeline {
                         ]
                     )
 
-                    // Check if deployment is successful
-                     boolean isDeploymentSuccessful = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://51.20.115.205:400', returnStdout: true).trim() == '200'
-
-
-                    if (!isDeploymentSuccessful) {
-                        // Rollback to the previous version
-                        def previousSuccessfulTag = readFile('previous_successful_tag.txt').trim()
-                        sshPublisher(
-                            publishers: [
-                                sshPublisherDesc(
-                                    configName: "Zakir",
-                                    transfers: [sshTransfer(
-                                        execCommand: """
-                                            docker pull zakir279/zakir-cv:${previousSuccessfulTag}
-                                            docker stop zakir-cv-container || true
-                                            docker rm zakir-cv-container || true
-                                            docker run -d --name zakir-cv-container -p 400:80 zakir279/zakir-cv:${previousSuccessfulTag}
-                                        """
-                                    )]
-                                )
-                            ]
-                        )
-                    } else {
-                        // Update the last successful tag
-                        writeFile file: 'previous_successful_tag.txt', text: "${env.BUILD_ID}"
-                    }
+                    
                 }
             }
         }
