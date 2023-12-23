@@ -5,7 +5,7 @@ pipeline {
       stage('Build') {
         steps {
           script {
-            dockerImage = docker.build("zakir279/zakir-CV:${env.BUILD_ID}")
+            dockerImage = docker.build("zakir279/zakir-cv:${env.BUILD_ID}")
         }
     }
 }
@@ -35,10 +35,10 @@ pipeline {
                                 configName: "Zakir", 
                                 transfers: [sshTransfer(
                                     execCommand: """
-                                        docker pull zakir279/zakir-CV:${env.BUILD_ID}
-                                        docker stop zakir279/zakir-CV-container || true
-                                        docker rm zakir279/zakir-CV-container || true
-                                        docker run -d --name zakir279/zakir-CV -p 400:80 zakir279/zakir-CV:${env.BUILD_ID}
+                                        docker pull zakir279/zakir-cv:${env.BUILD_ID}
+                                        docker stop zakir279/zakir-cv-container || true
+                                        docker rm zakir279/zakir-cv-container || true
+                                        docker run -d --name zakir279/zakir-cv -p 400:80 zakir279/zakir-cv:${env.BUILD_ID}
                                     """
                                 )]
                             )
@@ -57,10 +57,10 @@ pipeline {
                                     configName: "MyUbuntuServer",
                                     transfers: [sshTransfer(
                                         execCommand: """
-                                            docker pull zakir279/zakir-CV:${previousSuccessfulTag}
-                                            docker stop zakir-CV-container || true
-                                            docker rm zakir-CV-container || true
-                                            docker run -d --name zakir-CV-container -p 400:80 zakir279/zakir-CV:${previousSuccessfulTag}
+                                            docker pull zakir279/zakir-cv:${previousSuccessfulTag}
+                                            docker stop zakir-cv-container || true
+                                            docker rm zakir-cv-container || true
+                                            docker run -d --name zakir-cv-container -p 400:80 zakir279/zakir-cv:${previousSuccessfulTag}
                                         """
                                     )]
                                 )
