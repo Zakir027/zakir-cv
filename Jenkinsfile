@@ -1,14 +1,19 @@
 pipeline {
     agent any
 
-    stages {
-      stage('Build') {
-        steps {
-          script {
-            dockerImage = docker.build("zakir279/zakir-cv:${env.BUILD_ID}")
-        }
+    environment {
+        // Define environment variables if needed
     }
-}
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    dockerImage = docker.build("zakir279/zakir-cv:${env.BUILD_ID}")
+                }
+            }
+        }
+
         stage('Push') {
             steps {
                 script {
@@ -36,9 +41,9 @@ pipeline {
                                 transfers: [sshTransfer(
                                     execCommand: """
                                         docker pull zakir279/zakir-cv:${env.BUILD_ID}
-                                        docker stop zakir279/zakir-cv-container || true
-                                        docker rm zakir279/zakir-cv-container || true
-                                        docker run -d --name zakir279/zakir-cv -p 80:80 zakir279/zakir-cv:${env.BUILD_ID}
+                                        docker stop zakir-cv-container || true
+                                        docker rm zakir-cv-container || true
+                                        docker run -d --name zakir-cv-container -p 80:80 zakir279/zakir-cv:${env.BUILD_ID}
                                     """
                                 )]
                             )
@@ -46,8 +51,7 @@ pipeline {
                     )
 
                     // Check if deployment is successful
-                     boolean isDeploymentSuccessful = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://51.20.115.205:400', returnStdout: true).trim() == '200'
-
+                    boolean isDeploymentSuccessful = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://51.20.115.205:80', returnStdout: true).trim() == '200'
 
                     if (!isDeploymentSuccessful) {
                         // Rollback to the previous version
