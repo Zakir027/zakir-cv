@@ -1,10 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        // Define environment variables if needed
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -86,7 +81,7 @@ pipeline {
                 to: 'zakir809288@gmail.com',
                 subject: "Failed Pipeline: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "Something is wrong with the build ${env.BUILD_URL}"
-                
+
             )
         }
     }
