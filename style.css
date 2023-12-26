@@ -1,63 +1,140 @@
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: "Montserrat", sans-serif;
-  background-color: #f7f7f7;
+* {margin: 0;padding: 0;}
+
+body{font-family: 'Montserrat', sans-serif;}
+
+#page {
+    min-height: 200px;
+    width: 60%;
+    min-width: 600px;
+    background: whitesmoke;
+    margin: 50px auto;
+    padding: 30px;
+    color: #27aae1;
 }
 
-.container {
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 5px;
-  margin-top: 50px;
+.photo-and-name {
+    /* NO STYLE NEEDED YET */
 }
 
-h1 {
-  font-size: 36px;
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
+.photo {
+    width: 15%;
+    min-width: 130px;
+    float: left;
+    margin-right: 20px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.contact-info-box {
+    width: 70.9%;
+    display: inline-block;
 }
 
-label {
-  font-weight: bold;
-  margin-bottom: 10px;
+.name {
+    margin-bottom: -5px;
+}
+.job-title {
+    display: inline-block;
 }
 
-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 300px;
+.contact-details {
+    background: #27aae1;
+    color: white;
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+    padding: 5px;
+    font-size: 15px;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+#objective {
+    
 }
 
-button:hover {
-  background-color: #0062cc;
+#objective h3 {
+    border: 1px solid #d3d3d3;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 30px 0 10px;
 }
 
-#result {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
+#objective p {
+    padding: 0 5px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #000;
+}
+
+#education h3 {
+    border: 1px solid #d3d3d3;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 30px 0 10px;
+}
+
+#education table td {
+    padding: 5px;
+    font-size: 14px;
+    color: #000;
+}
+
+#education table tr.school-1 td:first-child {
+    width: 120px;
+    color: gray;
+    padding-bottom: 25px;
+}
+
+#education table tr.school-2 td:first-child {
+    padding-bottom: 25px;
+}
+
+#work h3 {
+    border: 1px solid #d3d3d3;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 30px 0 10px;
+}
+
+#work table td {
+    padding: 5px;
+    font-size: 14px;
+    color: #000;
+}
+
+#work table tr.work-1 td:first-child {
+    width: 120px;
+    color: gray;
+    padding-bottom: 25px;
+}
+
+#work table tr.work-1 td {
+    padding-bottom: 25px;
+}
+
+#work table tr.work-2 td:first-child {
+    width: 120px;
+    color: gray;
+}
+
+#bio-data h3 {
+    border: 1px solid #d3d3d3;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 30px 0 10px;
+}
+
+#bio-data table td {
+    padding: 8px;
+    font-size: 15px;
+    color: #000;
+}
+
+#bio-data table tr td:first-child {
+    width: 200px;
+}
+
+#bio-data table tr td:nth-child(2) {
+    width: 300px;
 }
